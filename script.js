@@ -5,7 +5,7 @@ let sections = document.querySelectorAll('section'),
     rootElement = document.documentElement,
     target = document.querySelector("footer");
 
-function callback(entries, observer) {
+function callback(entries) {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             scrollToTopBtn.classList.add("showBtn");
@@ -15,7 +15,7 @@ function callback(entries, observer) {
     });
 }
 
-function onSection(entries, observer) {
+function onSection(entries) {
     entries.forEach(entry => {
         let el = nav.querySelector('a[href="#' + entry.target.getAttribute('id') + '"]');
         if (entry.isIntersecting) {
@@ -71,6 +71,7 @@ function scrollToTop() {
 
 scrollToTopBtn.addEventListener("click", scrollToTop);
 window.addEventListener("scroll", handleScroll);
+
 // nav.querySelectorAll('a').forEach(el =>
 //     el.addEventListener('click', () => {
 //         let id = el.getAttribute('href');

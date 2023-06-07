@@ -1,3 +1,3 @@
 # Меню навигации для одностраничного сайта с выделением активного пункта при скролле и клике, плавной прокруткой и с кнопкой навигации "Наверх"
-<img src="screen2.png" alt="">
-<img src="screen.png" alt="">
+<img src="assets/screen2.png" alt="">
+<img src="assets/screen.png" alt="">
