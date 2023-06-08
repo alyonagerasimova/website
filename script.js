@@ -3,7 +3,8 @@ let sections = document.querySelectorAll('section'),
     nav_height = nav.offsetHeight,
     scrollToTopBtn = document.querySelector(".scrollToTopBtn"),
     rootElement = document.documentElement,
-    target = document.querySelector("footer");
+    target = document.querySelector("footer"),
+    icon = document.querySelector(".icon");
 
 function callback(entries) {
     entries.forEach(entry => {
@@ -71,6 +72,16 @@ function scrollToTop() {
 
 scrollToTopBtn.addEventListener("click", scrollToTop);
 window.addEventListener("scroll", handleScroll);
+icon.addEventListener("click", myFunction);
+
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
 
 // nav.querySelectorAll('a').forEach(el =>
 //     el.addEventListener('click', () => {
