@@ -1,56 +1,7 @@
-.topnav {
-    overflow: hidden;
-    //height: 80px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: var(--bg-color);
-    width: 100%;
-    z-index: var(--navbar-z-index);
-    font-size: var(--font-size-m);
-    font-family: var(--font-family-main);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 20px 10px;
-
-    .navbar {
-        padding: 0;
-
-        a {
-            margin-right: 20px;
-            color: var(--primary-color);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border-bottom: 2px solid transparent;
-
-            &:hover {
-                color: #a4a4a4;
-            }
-
-            .active {
-                border-bottom: 2px solid #FFF;
-                padding-bottom: 6px;
-                color: #FFF;
-            }
-        }
-
-        &__info {
-
-        }
-    }
-}
-
-.topnav .icon {
-    display: none;
-}
-
-
 section,
-header,
 footer {
     background: var(--bg-color);
-    border-bottom: 4px solid #337AB7;
+    border-bottom: 1px solid #000000;
     height: 600px;
     display: flex;
     flex-flow: column;
@@ -70,13 +21,12 @@ section {
         margin-top: 60px;
     }
 
-    .active {
+    &.active {
         opacity: 1;
-        transition: opacity 1.2s;
+        transition: opacity 0.3s;
     }
 }
 
-header,
 footer {
     height: 400px;
     background: var(--bg-color);
@@ -107,38 +57,5 @@ footer {
     transform: translateY(0);
 }
 
-@media screen and (max-width: 600px) {
-    .topnav a {
-        display: none;
-    }
-    .topnav ul {
-        display: block
-    }
-    .topnav a.icon {
-        display: block;
-    }
-}
 
-@media screen and (max-width: 600px) {
-    .topnav.responsive {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: fit-content;
-        background-color: rgba(51, 122, 183, 0.53);
-        padding-top: 70px;
-    }
-    .topnav.responsive a {
-        display: block;
-        margin: 20px 0;
-    }
-    .topnav.responsive a.icon {
-        position: absolute;
-        top: 0;
-    }
-    .topnav.responsive a.icon::after {
-        content: "Меню";
-    }
-}
 

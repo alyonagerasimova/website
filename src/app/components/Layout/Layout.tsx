@@ -1,122 +1,83 @@
 import './Layout.scss';
-import Icon from '../../../assets/fa-bars.svg';
+import React, {useCallback, useEffect, useState} from "react";
+import Navbar from "../Navbar/Navbar";
+import {DynamicBlock} from "../../App";
+import Header from "../Header/Header";
 
 export const Layout = () => {
-    let rootElement = document.documentElement;
-    //
-    // function callback(entries:any) {
-    //     entries.forEach((entry: any) => {
-    //         if (entry.isIntersecting) {
-    //             scrollToTopBtn.classList.add("showBtn");
-    //         } else {
-    //             scrollToTopBtn.classList.remove("showBtn");
-    //         }
-    //     });
-    // }
-    //
-    // function onSection(entries:any) {
-    //     entries.forEach((entry:any) => {
-    //         let el = nav.querySelector('a[href="#' + entry.target.getAttribute('id') + '"]');
-    //         if (entry.isIntersecting) {
-    //             entry.target.classList.add('active');
-    //             el?.classList?.add('active');
-    //         } else {
-    //             entry.target.classList.remove('active');
-    //             el?.classList?.remove('active');
-    //         }
-    //     });
-    // }
-    //
-    // const options = {
-    //     threshold: 0.7
-    // }
-    // let observerSection = new IntersectionObserver(onSection, options);
-    // let observer = new IntersectionObserver(callback);
-    // observer.observe(target);
-    //
-    // function handleScroll() {
-    //     // for (let section of sections) {
-    //     //     observerSection.observe(section);
-    //     // }
-    //     document.querySelector('nav a').classList.remove('active');
-    //     let cur_pos = this.scrollY;
-    //     sections.forEach((section) => {
-    //     let top = section.offsetTop - nav_height - 180, //180 в данном коде - это произвольное значение, позволяющее переключиться на нижнюю секцию немного раньше, чем она дойдет до фиксированного меню
-    //         bottom = top + section.offsetHeight;
-    //     let el = nav.querySelector('a[href="#' + section.getAttribute('id') + '"]');
-    //     if (cur_pos >= top && cur_pos <= bottom) {
-    //         section.classList.add('active');
-    //         el?.classList?.add('active');
-    //     } else {
-    //         section.classList.remove('active');
-    //         el?.classList?.remove('active');
-    //     }
-    //     });
-    //
-    //     let scrollTotal = rootElement.scrollHeight - rootElement.clientHeight;
-    //     if (rootElement.scrollTop / scrollTotal > 0.8) {
-    //         scrollToTopBtn.classList.add("showBtn");
-    //     } else {
-    //         scrollToTopBtn.classList.remove("showBtn");
-    //     }
-    // }
 
-    function scrollToTop() {
+    const rootElement = document.documentElement;
+    const sections = document.querySelectorAll('section'),
+        nav = document.querySelector('nav'),
+        scrollToTopBtn = document.querySelector(".scrollToTopBtn");
+    const [scroll, setScroll] = useState(0);
+    const onScroll = useCallback(() => setScroll(Math.round(window.scrollY)), []);
+    const [isOpenMenu, setIsOpenMenu] = useState(false);
+
+    const handleMenuClick = () => {
+        setIsOpenMenu(prev => !prev);
+    }
+
+    const checkVisible = () => {
+        let cur_pos = scroll;
+        sections.forEach((section) => {
+            let top = section.offsetTop - nav.offsetHeight - 200 - 60,
+                bottom = top + section.offsetHeight;
+            let el = nav.querySelector('a[href="#' + section.getAttribute('id') + '"]')
+            if (cur_pos >= top && cur_pos <= bottom) {
+                section.classList.add('active');
+                el?.classList?.add('active');
+            } else {
+                section.classList?.remove('active');
+                el?.classList?.remove('active');
+            }
+        })
+    }
+
+    const scrollToTop = () => {
         rootElement.scrollTo({
             top: 0,
             behavior: "smooth"
         });
     }
+    const handleScroll = () => {
 
-    // window.addEventListener("scroll", handleScroll);
+        document.querySelectorAll(`nav ${isOpenMenu ? '.navbar.active' : '.navbar'}__links a`)
+            .forEach(el => el.classList.remove('active'))
 
-    function myFunction() {
-        var x = document.getElementById("myTopnav");
-        if (x.className === "topnav") {
-            x.className += " responsive";
+        checkVisible();
+        let scrollTotal = rootElement.scrollHeight - rootElement.clientHeight;
+        if (rootElement.scrollTop / scrollTotal > 0.8) {
+            scrollToTopBtn?.classList?.add("showBtn");
         } else {
-            x.className = "topnav";
+            scrollToTopBtn?.classList?.remove("showBtn");
         }
     }
 
-// nav.querySelectorAll('a').forEach(el =>
-//     el.addEventListener('click', () => {
-//         let id = el.getAttribute('href');
-//         let num = document.querySelector(id).offsetTop- nav_height;
-//         document.body.animate({
-//             scrollTop: num
-//         }, 600);
-//         return false;
-//     }));
+    useEffect(() => {
+        onScroll();
+        window.addEventListener("scroll", onScroll);
+        return () => window.removeEventListener("scroll", onScroll);
+    }, [onScroll]);
+
+    useEffect(() => {
+        handleScroll();
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [handleScroll]);
 
     return (
-        <div>
-            <nav className="topnav" id="myTopnav">
-                <div className='navbar'>
-                    <a href="#section-1">Обо мне</a>
-
-                    <a href="#section-2">Услуги и цены</a>
-
-                    <a href="#section-3">Контакты</a>
-                </div>
-                <div className="navbar__info">
-                    +1 123 456 78 90
-                    Воронежская, 33
-                </div>
-
-                <a className="icon" onClick={myFunction}>
-                    <Icon/>
-                </a>
-            </nav>
-
-            <header>Header</header>
-            <section id="section-1">Секция 1</section>
-            <section id="section-2">Секция 2</section>
-            <section id="section-3">Секция 3</section>
+        <div className='layout'>
+            <Navbar isOpenMenu={isOpenMenu} handleMenuClick={handleMenuClick}/>
+            <Header/>
+            <section id="section-1">Обо мне</section>
+            <section id="section-2">Услуги и цены</section>
+            <section id="section-3">Контакты</section>
             <section>Секция без пункта меню</section>
-
+            <DynamicBlock/>
             <button className="scrollToTopBtn" onClick={scrollToTop}>☝️</button>
             <footer>Footer</footer>
+            {/*<div className="scroll">{scroll}</div>*/}
         </div>
     );
 };
