@@ -1,60 +1,64 @@
-section,
-footer {
-    background: var(--bg-color);
-    border-bottom: 1px solid #000000;
-    height: 600px;
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    justify-content: center;
-    color: var(--primary-color);
-}
-
-section {
-    opacity: 0.1;
-
-    &:nth-child(even) {
-        background: var(--secondary-bg-color);
+.layout{
+    h1{
+        font-size: var(--font-size-xl);
     }
 
-    &:first-child {
-        margin-top: 60px;
+    section,
+    footer {
+        background: var(--bg-color);
+        min-height: 100px;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary-color);
     }
 
-    &.active {
+    section {
+        opacity: 0.1;
+
+        &:nth-child(even) {
+            background: var(--secondary-bg-color);
+        }
+
+        &:first-child {
+            margin-top: 60px;
+        }
+
+        &.active {
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+    }
+
+    footer {
+        background: var(--bg-color);
+        color: var(--primary-color);
+    }
+
+    .scrollToTopBtn {
+        background-color: white;
+        border: none;
+        color: black;
+        cursor: pointer;
+        font-size: 18px;
+        line-height: 48px;
+        width: 48px;
+        border-radius: 50%;
+
+        position: fixed;
+        bottom: 50px;
+        left: 50px;
+        z-index: 100;
+        opacity: 0;
+        transform: translateY(100px);
+        transition: all 0.5s ease;
+    }
+
+    .showBtn {
         opacity: 1;
-        transition: opacity 0.3s;
+        transform: translateY(0);
     }
-}
-
-footer {
-    height: 400px;
-    background: var(--bg-color);
-    color: var(--primary-color);
-}
-
-.scrollToTopBtn {
-    background-color: white;
-    border: none;
-    color: black;
-    cursor: pointer;
-    font-size: 18px;
-    line-height: 48px;
-    width: 48px;
-    border-radius: 50%;
-
-    position: fixed;
-    bottom: 50px;
-    left: 50px;
-    z-index: 100;
-    opacity: 0;
-    transform: translateY(100px);
-    transition: all 0.5s ease;
-}
-
-.showBtn {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 

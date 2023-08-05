@@ -8,6 +8,7 @@ import MiniCssExtractPlugin from "mini-css-extract-plugin";
 export function buildDevServer(options: BuildOptions): DevServerConfiguration {
     return {
         port: options.port,
+        host: "192.168.1.34",
         open: true
     }
 }
@@ -67,7 +68,7 @@ export default (env: BuildEnv) => {
             ],
         },
         resolve: {
-            extensions: ['.tsx', '.ts', '.js'],
+            extensions: ['.tsx', '.ts', '.js', 'json'],
         },
         devtool: isDev ? 'inline-source-map' : undefined,
         devServer: isDev ? buildDevServer({mode, isDev, port: PORT}) : undefined,

@@ -10,3 +10,12 @@ html{
     scroll-behavior: smooth;
     scroll-padding-top: 5em;
 }
+
+body{
+    font: var(--font-m);
+}
+
+.app{
+    width: 100%;
+    height: 100%;
+}

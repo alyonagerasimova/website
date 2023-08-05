@@ -1,35 +1,31 @@
 .header {
     margin: calc(var(--navbar-height) + 70px) 95px 90px;
-    height: 354px;
     background: var(--bg-color);
     color: var(--primary-color);
     display: flex;
     justify-content: center;
-    //flex-wrap: wrap;
 
     img {
-        width: 464px;
-        height: 354px;
+        height: auto;
+        width: 100%;
+        max-width: var(--header-content-width);
+        //height: var(--header-height);
         margin-right: 25px;
     }
 
     .content {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-
+        //height: var(--header-height);
         &__text {
+            font: var(--font-m);
             h1 {
                 font: var(--font-xl);
                 font-weight: bold;
-
             }
         }
 
         &__btn {
             button {
                 cursor: pointer;
-
                 color: var(--inverted-primary-color);
                 background: var(--btn-bg-color);
                 text-align: center;
@@ -37,6 +33,7 @@
                 border: none;
                 border-radius: 6px;
                 padding: 15px 30px;
+                margin-top: 30px;
                 font-weight: 700;
                 line-height: 1.55;
                 letter-spacing: 0.5px;
@@ -48,3 +45,45 @@
         }
     }
 }
+
+@media screen and (max-width: 1000px) {
+    .header {
+        margin: calc(var(--navbar-height) + 40px) 30px 90px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-width: 300px;
+        img {
+            margin: 0;
+        }
+
+        .content {
+            margin: 20px;
+            max-width: var(--header-content-width);
+            &__text {
+                h1 {
+                    font: var(--font-l);
+                    font-weight: bold;
+                }
+            }
+            &__btn {
+                text-align: center;
+            }
+        }
+    }
+}
+
+//@media screen and (max-width: 980px) {
+//    .header {
+//        .content {
+//            &__text {
+//                font: var(--font-s);
+//                h1 {
+//                    font: var(--font-l);
+//                    font-weight: bold;
+//                }
+//            }
+//        }
+//    }
+//}

@@ -1,8 +1,10 @@
 import './Layout.scss';
 import React, {useCallback, useEffect, useState} from "react";
-import Navbar from "../Navbar/Navbar";
-import {DynamicBlock} from "../../App";
 import Header from "../Header/Header";
+import About from "../About/About";
+import Price from "../Price/Price";
+import Contact from "../Contact/Contact";
+import Review from "../Review/Review";
 
 export const Layout = () => {
 
@@ -68,13 +70,20 @@ export const Layout = () => {
 
     return (
         <div className='layout'>
-            <Navbar isOpenMenu={isOpenMenu} handleMenuClick={handleMenuClick}/>
+
             <Header/>
-            <section id="section-1">Обо мне</section>
-            <section id="section-2">Услуги и цены</section>
-            <section id="section-3">Контакты</section>
-            <section>Секция без пункта меню</section>
-            <DynamicBlock/>
+            <section id="section-1">
+                <About/>
+            </section>
+            <section id="section-2">
+                <Price/>
+            </section>
+            <section>
+                <Review/>
+            </section>
+            <section id="section-3">
+                <Contact/>
+            </section>
             <button className="scrollToTopBtn" onClick={scrollToTop}>☝️</button>
             <footer>Footer</footer>
             {/*<div className="scroll">{scroll}</div>*/}

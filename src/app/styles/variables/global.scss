@@ -1,5 +1,5 @@
 :root {
-    --font-family-main: "Times New Roman", serif;
+    --font-family-main: "Inter", serif;
     --font-size-s: 14px;
     --font-line-s: 22px;
     --font-s: var(--font-size-s) / var(--font-line-s) var(--font-family-main);
@@ -15,8 +15,9 @@
 
     // Размеры
     --navbar-height: 60px;
-    --sidebar-width: 300px;
-    --sidebar-width-collapsed: 80px;
+    --header-height: 354px;
+    --header-content-width: 464px;
+    --max-width-screen: 600px;
 
     // Индексы
     --modal-z-index: 10;
