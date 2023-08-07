@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [ master ]
 jobs:
-  pipeline:
+  build-app:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -19,4 +19,37 @@ jobs:
       - name: Install modules
         run: npm install
       - name: Build production project
-        run: npm run build:prod
+        run: npm run build:prod\
+      - name: Upload output build dist
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-dist
+          path: ./build
+  build-image:
+    name: Build Docker image
+    needs: build-app
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        tag: [ alpine, debian, ubuntu, opensuse ]
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: app-dist
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+        with:
+          platforms: linux/amd64,linux/arm64,linux/arm/v7
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v2
+      - name: Build Docker image
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: Dockerfile
+          load: true
+          tags: master-build-image
+
