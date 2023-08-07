@@ -9,7 +9,7 @@ export function buildDevServer(options: BuildOptions): DevServerConfiguration {
     return {
         port: options.port,
         host: "192.168.1.34",
-        open: true
+        open: true,
     }
 }
 
@@ -17,7 +17,7 @@ export default (env: BuildEnv) => {
 
     const mode = env.mode || "development";
     const isDev = mode === "development";
-    const PORT = env.port || 3000;
+    const PORT = env.port || 8080;
 
     const config: webpack.Configuration = {
         mode: "development",
