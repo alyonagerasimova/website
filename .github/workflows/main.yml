@@ -24,7 +24,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: app-dist
-          path: ./build
+          path: build
   build-image:
     name: Build Docker image
     needs: build-app
@@ -49,7 +49,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: Dockerfile
+          file: ./Dockerfile
           load: true
           tags: master-build-image
 
