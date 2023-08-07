@@ -38,7 +38,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: app-dist
-          entrypoint: .
+          path: .
       - name: Checkout
         uses: actions/checkout@v3
       - name: Set up QEMU
