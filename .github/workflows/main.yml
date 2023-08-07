@@ -19,24 +19,26 @@ jobs:
       - name: Install modules
         run: npm install
       - name: Build production project
-        run: npm run build:prod\
+        run: npm run build:prod
       - name: Upload output build dist
         uses: actions/upload-artifact@v3
         with:
           name: app-dist
           path: build
+          retention-days: 1
   build-image:
     name: Build Docker image
     needs: build-app
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        tag: [ alpine, debian, ubuntu, opensuse ]
+        tag: [ alpine, ubuntu ]
     steps:
       - name: Download artifacts
         uses: actions/download-artifact@v3
         with:
           name: app-dist
+          entrypoint: .
       - name: Checkout
         uses: actions/checkout@v3
       - name: Set up QEMU
