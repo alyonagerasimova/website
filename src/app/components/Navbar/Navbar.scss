@@ -1,6 +1,4 @@
 .topnav {
-    //overflow: hidden;
-    //height: 80px;
     position: fixed;
     top: 0;
     left: 0;
@@ -9,7 +7,13 @@
     height: var(--navbar-height);
     z-index: var(--navbar-z-index);
     font: var(--font-m);
-    padding: 10px;
+    padding: 10px 80px;
+    display: flex;
+    justify-content: space-between;
+
+    &.after_scroll{
+        box-shadow: 0 1px 7px 0 #71717157;
+    }
 
     .navbar {
         display: flex;
@@ -37,12 +41,12 @@
                 }
             }
         }
-        &__info {
-            color: var(--secondary-color);
-        }
+    }
+    &__contact {
+        color: var(--secondary-color);
     }
 
-    .mobile {
+    &__mobile {
         display: none;
         i{
             align-items: center;
@@ -52,36 +56,40 @@
 
 @media screen and (max-width: 600px) {
     .topnav{
+        padding: 10px 30px;
         .navbar{
             display: block;
             position: fixed;
-            right: -300px;
-            top: var(--navbar-height);
-            height: 100vh;
-            width: 300px;
-            background: var(--overlay-bg);
+            right: -100vw;
+            top: calc(var(--navbar-height) - 1px);
+            height: 200px;
+            width: 100vw;
+            background: var(--bg-color);
             padding: 20px;
             transition: 0.3s ease-in-out;
+            text-align: center;
+
 
             &.active{
                 right: 0;
+                box-shadow: 0 4px 5px 0 #71717157;
             }
 
             &__links {
                 display: flex;
                 flex-direction: column;
-                align-items: flex-start;
+                align-items: center;
                 justify-content: flex-start;
                 a {
                     margin-bottom: 30px;
                 }
             }
-            &__info {
-                color: var(--inverted-primary-color);
-                font: var(--font-m);
-            }
         }
-        .mobile {
+        //&__contact {
+        //    color: var(--inverted-primary-color);
+        //    font: var(--font-m);
+        //}
+        &__mobile {
             display: flex;
             justify-content: flex-end;
             i{

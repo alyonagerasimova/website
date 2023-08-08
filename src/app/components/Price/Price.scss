@@ -1,11 +1,4 @@
 .prices {
-    margin: 150px 0;
-
-    h1 {
-        margin-bottom: 85px;
-        text-align: center;
-    }
-
     &__items {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -16,14 +9,13 @@
         .item {
             padding: 20px;
             font-size: var(--font-size-s);
-            font-family: Inter, sans-serif;
             &__header {
                 display: flex;
                 justify-content: space-between;
                 margin-bottom: 15px;
                 column-gap: 20px;
 
-                h2, pre {
+                h3, pre {
                     font-size: var(--font-size-m);
                     font-weight: 600;
                 }
@@ -41,10 +33,10 @@
 
 @media screen and (max-width: 600px) {
     .prices{
-
         &__items {
             display: grid;
             grid-template-columns: 1fr;
+            margin: 0 50px;
         }
     }
 }

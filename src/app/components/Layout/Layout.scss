@@ -2,11 +2,18 @@
     h1{
         font-size: var(--font-size-xl);
     }
+    h2 {
+        margin-top: 70px;
+        margin-bottom: 85px;
+        text-align: center;
+        font-size: var(--font-size-xl);
+        font-weight: 500;
+    }
 
     section,
     footer {
         background: var(--bg-color);
-        min-height: 100px;
+        min-height: 60px;
         display: flex;
         flex-flow: column;
         align-items: center;
@@ -15,7 +22,8 @@
     }
 
     section {
-        opacity: 0.1;
+        opacity: 0.3;
+        transition: opacity 0.6s;
 
         &:nth-child(even) {
             background: var(--secondary-bg-color);
@@ -27,25 +35,28 @@
 
         &.active {
             opacity: 1;
-            transition: opacity 0.3s;
+        }
+
+        .main_content{
+            margin: 0 95px;
         }
     }
 
     footer {
         background: var(--bg-color);
-        color: var(--primary-color);
+        color: var(--secondary-color);
+        font-size: 12px;
     }
 
     .scrollToTopBtn {
-        background-color: white;
+        background-color: var(--btn-bg-color);
         border: none;
         color: black;
         cursor: pointer;
         font-size: 18px;
         line-height: 48px;
-        width: 48px;
+        //width: 48px;
         border-radius: 50%;
-
         position: fixed;
         bottom: 50px;
         left: 50px;

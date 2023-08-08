@@ -4,11 +4,16 @@ import './Contact.scss';
 const Contact = () => {
     return (
         <div className='contact'>
-            <div>
-                <h1>Контакты</h1>
+            <div className='contact__container'>
+                <h2>Контакты</h2>
+                <div className='contact__container_info'>
+                    <div className='phone'>Телефон: +1 123 456 78 90</div>
+                    <div className='email'>Почта: hello@company.com</div>
+                    <div className='address'>Воронежская, 33. Санкт-Петербург</div>
+                </div>
             </div>
 
-            <div className="contact-map">
+            <div className="contact__map">
                 <div style={{position: "relative", overflow: "hidden"}}>
                     <a
                         href="https://yandex.ru/maps/51/samara/?utm_medium=mapframe&utm_source=maps"

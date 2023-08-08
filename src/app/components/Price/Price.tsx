@@ -5,12 +5,12 @@ const Price = () => {
 
     return (
         <div className='prices'>
-            <h1>Услуги и цены</h1>
+            <h2>Услуги и цены</h2>
             <div className='prices__items'>
                 {data.prices.service.map((item: string, i: number) => (
                         <div className='item' key={i}>
                             <div className='item__header'>
-                                <h2>{item}</h2>
+                                <h3>{item}</h3>
                                 <pre>{data.prices.price[i]}</pre>
                             </div>
                             <div className='item__line'/>

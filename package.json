@@ -9,7 +9,8 @@
     "build:prod": "webpack --env mode=production",
     "build:dev": "webpack --env mode=development",
     "build:docker:image": "docker build -t webserver .",
-    "run:docker": "docker run -it --rm -d -p 8080:80 --name web webserver"
+    "run:docker": "docker run -it --rm -d -p 8080:80 --name web webserver",
+    "build-and-run:docker": "npm run build:prod && npm run build:docker:image && npm run run:docker"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.0.1",

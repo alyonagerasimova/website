@@ -5,7 +5,7 @@ import Square from "../../../assets/square.svg";
 const About = () => {
     return (
         <div className='about'>
-            <h1>Обо мне</h1>
+            <h2>Обо мне</h2>
             <div className='about__items'>
                 {
                     data.about.header.map((item: string, i: number) => (
@@ -16,7 +16,7 @@ const About = () => {
                             </div>
 
                             <div>
-                                <h2>{item}</h2>
+                                <h3>{item}</h3>
                                 <ul>
                                     {data.about.items[i].map((it, index) => (
                                             <li key={index}>

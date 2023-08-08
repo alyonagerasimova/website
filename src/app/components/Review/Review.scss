@@ -1,13 +1,18 @@
 .review{
-    margin: 70px 10px 110px;
-    h1{
-        text-align: center;
-        margin-bottom: 100px;
-    }
+    margin: 70px 130px 110px;
+
     &__items{
         display: flex;
         justify-content: center;
         padding: 20px;
     }
+}
 
+@media screen and (max-width: 600px) {
+    .review{
+        margin: 70px 50px 110px;
+        &__items {
+
+        }
+    }
 }

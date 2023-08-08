@@ -1,11 +1,5 @@
 .about {
-    margin: 0 130px 50px;
-
-    h1 {
-        margin-top: 70px;
-        margin-bottom: 85px;
-        text-align: center;
-    }
+    margin: 0 100px 50px;
 
     &__items {
         display: grid;
@@ -18,8 +12,9 @@
         display: flex;
         justify-content: flex-start;
 
-        h2 {
-            font-size: var(--font-size-l);
+        h3 {
+            font-size: 20px;
+            font-weight: 700;
             margin: 0 0 10px 10px;
         }
 
@@ -36,7 +31,7 @@
 
 @media screen and (max-width: 600px) {
     .about{
-        margin: 0 30px 50px;
+        margin: 0 50px 50px;
         &__items {
             display: grid;
             grid-template-columns: 1fr;

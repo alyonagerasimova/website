@@ -5,6 +5,8 @@ import About from "../About/About";
 import Price from "../Price/Price";
 import Contact from "../Contact/Contact";
 import Review from "../Review/Review";
+import Navbar from "../Navbar/Navbar";
+import Arrow from "../../../assets/Стрелка.svg";
 
 export const Layout = () => {
 
@@ -19,9 +21,17 @@ export const Layout = () => {
     const handleMenuClick = () => {
         setIsOpenMenu(prev => !prev);
     }
+    const handleClickItem = () => {
+        setIsOpenMenu(false);
+    }
 
     const checkVisible = () => {
         let cur_pos = scroll;
+        if(cur_pos > 80){
+            nav?.classList?.add("after_scroll");
+        }else {
+            nav?.classList?.remove("after_scroll");
+        }
         sections.forEach((section) => {
             let top = section.offsetTop - nav.offsetHeight - 200 - 60,
                 bottom = top + section.offsetHeight;
@@ -43,10 +53,9 @@ export const Layout = () => {
         });
     }
     const handleScroll = () => {
-
-        document.querySelectorAll(`nav ${isOpenMenu ? '.navbar.active' : '.navbar'}__links a`)
-            .forEach(el => el.classList.remove('active'))
-
+        document.querySelectorAll(
+            `nav ${isOpenMenu ? '.navbar.active' : '.navbar'}__links a`
+        ).forEach(el => el.classList.remove('active'));
         checkVisible();
         let scrollTotal = rootElement.scrollHeight - rootElement.clientHeight;
         if (rootElement.scrollTop / scrollTotal > 0.8) {
@@ -70,7 +79,7 @@ export const Layout = () => {
 
     return (
         <div className='layout'>
-
+            <Navbar isOpenMenu={isOpenMenu} handleMenuClick={handleMenuClick} handleClickItem={handleClickItem}/>
             <Header/>
             <section id="section-1">
                 <About/>
@@ -84,8 +93,8 @@ export const Layout = () => {
             <section id="section-3">
                 <Contact/>
             </section>
-            <button className="scrollToTopBtn" onClick={scrollToTop}>☝️</button>
-            <footer>Footer</footer>
+            <Arrow className="scrollToTopBtn" onClick={scrollToTop}/>
+            <footer>Created by alyonagerasimova</footer>
             {/*<div className="scroll">{scroll}</div>*/}
         </div>
     );

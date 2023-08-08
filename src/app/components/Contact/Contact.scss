@@ -4,30 +4,58 @@
     column-gap: 90px;
     padding: 150px 100px;
     margin: 0;
-    
-    &-map {
+
+    &__container {
+        h2 {
+            margin: 0 0 20px;
+            font: var(--font-xl);
+            font-weight: 500;
+            text-align: start;
+        }
+
+        &_info {
+            padding: 10px 0;
+            font-size: var(--font-size-m);
+            font-weight: 300;
+            letter-spacing: 0.31px;
+            div{
+                padding-bottom: 10px;
+            }
+        }
+    }
+
+    &__map {
         iframe {
             height: 400px;
             width: 660px;
         }
     }
 
-    h1 {
-        font: var(--font-l);
-        font-weight: 500;
-    }
 }
 
 @media screen and (max-width: 600px) {
     .contact {
         display: flex;
         flex-direction: column;
-        padding: 150px 20px;
+        padding: 70px 20px;
         margin: 0;
-        &-map {
+
+        h2 {
+            font: var(--font-l);
+            font-weight: 500;
+            text-align: center;
+        }
+
+        &__info {
+            padding: 20px 0;
+            font-size: var(--font-size-m);
+        }
+
+        &__map {
             iframe {
-                height: auto;
-                width: 100%;
+                height: 400px;
+                max-width: 400px;
+                width: auto;
             }
         }
     }
